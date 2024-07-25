@@ -28,7 +28,11 @@ grep -l 'error' /tomcat/logs
 # search lines containing either of the words
 grep -e 'error' -e 'info' catalina.out
 
-# dispaly on the word which match 
+# search line containing either of the words
+grep -E 'error|info' catalina.out
+
+# search silently
+grep -q 'error' catalina.out && echo "found"
 
 
 
