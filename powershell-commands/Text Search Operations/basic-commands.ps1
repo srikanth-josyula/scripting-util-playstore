@@ -1,5 +1,5 @@
 # Search word
-Select-String -Pattern "error" -Path catalina.out -SimpleMatch
+Select-String -Pattern "error*" -Path catalina.out -SimpleMatch #treats * as word than regular expression
 Select-String -Pattern "error" -Path catalina.out
 Select-String "error" catalina.out
 
@@ -26,3 +26,17 @@ Select-String "06250935" catalina.out -Context 3,3
 
 # Search files with the word
 ls -r | Select-String -Pattern "error"
+
+# Quite, only provides boolean if the error is there doesnt print all words
+Select-String "error" .\catalina.out -Quiet
+
+#stops after first occurence of the word
+Select-String -Path .\catalina.2024-07-24.log -Pattern 'ERROR' -List
+
+#search in only specific file formats 
+Select-String -Path "F:\tomcat\logs\*" -Pattern 'HTTP' -Include '*.txt'
+
+#search in other formats exclude specific one
+Select-String -Path "F:\tomcat\logs\*" -Pattern 'HTTP' -Exclude '*.txt'
+
+
